@@ -29,3 +29,75 @@ This project is especially useful for organizations that:
 ---
 
 ## 📁 File Structure
+excel_filter_demo.xlsx
+├── SalesData → Raw dataset (structured as an Excel Table: Sales)
+└── Analysis → Query layer using dynamic array formulas
+
+---
+
+## 🧾 Dataset
+
+The dataset includes ~2 years of synthetic sales data with the following fields:
+
+- Date  
+- OrderID  
+- Customer  
+- Region  
+- Product  
+- Category  
+- SalesAmount  
+- Sales Rep  
+
+The data is structured as an Excel Table (`Sales`) to enable:
+- Structured references
+- Automatic expansion
+- Clean formula design
+
+---
+
+## 🧠 Core Concept: Excel as a Query Engine
+
+This project maps Excel functions to SQL concepts:
+
+| Excel Function | SQL Equivalent |
+|----------------|----------------|
+| `FILTER()`     | `WHERE`        |
+| `SORT()`       | `ORDER BY`     |
+| `UNIQUE()`     | `DISTINCT`     |
+| `CHOOSECOLS()` | `SELECT`       |
+| Table (`Sales`)| `FROM`         |
+
+---
+
+## 🔍 Example Queries
+
+### 1. Filter by Region
+
+```excel
+=FILTER(Sales, Sales[Region]="East")
+
+Similar SQL:
+SELECT *
+FROM Sales
+WHERE Region = 'East'
+
+## Multiple Conditions
+=FILTER(Sales, (Sales[Region]="East")*(Sales[SalesAmount]>1000))
+
+SQL
+WHERE Region IN ('East', 'West')
+
+## Sorting
+=SORT(FILTER(Sales, Sales[Region]="East"), 7, -1)
+
+SQL Sorting
+ORDER BY SalesAmount DESC
+
+## Unique Values
+=UNIQUE(Sales[Customer])
+
+SQL
+SELECT DISTINCT Customer
+FROM Sales
+
+=FILTER(Sales, Sales[Region]=B1) (From Video)
