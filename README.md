@@ -14,6 +14,8 @@ Instead of relying solely on PivotTables or manual filters, this approach enable
 - Clean, composable data logic
 
 ---
+NOTE: The corresponding article can be found at:
+https://datasciencereview.com/attention-excel-users-and-business-owners-allow-me-to-introduce-the-filter-function/
 
 ## 🎯 Objective
 
